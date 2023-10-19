@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="${'http://localhost:8080/pages/templates' + #servletContext.getContextPath()}+'/'">
+    <title>用户管理</title>
+</head>
+<body>
+<h1>用户信息管理</h1>
+<a href="/index/">返回首页</a>
+<div>
+    <table border="1px">
+        <tr>
+            <td>编号</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>手机号码</td>
+            <td>邮箱</td>
+            <td>权限</td>
+            <td>注册时间</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.password}"></td>
+            <td th:text="${user.phone}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.userType == 0 ? '普通用户' : '管理员'}"></td>
+            <td th:text="${user.registerTime}"></td>
+            <td>
+                <form method="get" action="/user/selectUserByName">
+                    <input type="hidden" name="name" th:value="${user.name}">
+                    <input type="submit" value="修改">
+                </form>
+                <form method="post" action="/user/deleteUserById">
+                    <input type="hidden" name="_method" value="delete">
+                    <input type="hidden" name="id" th:value="${user.id}">
+                    <input type="submit" value="删除">
+                </form>
+            </td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="${'http://localhost:8080/pages/templates' + #servletContext.getContextPath()}+'/'">
+    <title>修改页</title>
+</head>
+<body>
+<h1>修改页</h1>
+<a href="/index/">返回首页</a>
+<form action="/user/userUpdateById" method="post">
+    用户名：<input type="text" name="name" th:value="${userUpd.name}">
+    密码：<input type="text" name="password" th:value="${userUpd.password}">
+    电话号码：<input type="text" name="phone" th:value="${userUpd.phone}">
+    邮箱：<input type="text" name="email" th:value="${userUpd.email}">
+    权限：<input type="radio" name="userType" value="0"/>普通用户
+    <input type="radio" name="userType" value="1"/>管理员
+    <input type="hidden" name="id" th:value="${userUpd.id}">
+    <input type="hidden" name="registerTime" th:value="${userUpd.registerTime}">
+    <input type="submit" value="修改">
+</form>
+<div th:text="${user}"></div>
+</body>
+</html>

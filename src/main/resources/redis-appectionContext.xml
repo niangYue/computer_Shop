@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/aop
+           http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+<!--    &lt;!&ndash; 引入properties配置文件 &ndash;&gt;-->
+<!--    <context:property-placeholder location="classpath:redis.properties" />-->
+
+<!--    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
+<!--        <property name="maxIdle" value="${redis.maxIdle}" />-->
+<!--&lt;!&ndash;        <property name="maxActive" value="${redis.maxActive}" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="maxWait" value="${redis.maxWait}" />&ndash;&gt;-->
+<!--&lt;!&ndash;        <property name="testOnBorrow" value="${redis.testOnBorrow}" />&ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    <bean id="connectionFactory"-->
+<!--          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"-->
+<!--          p:host-name="${redis.host}" p:port="${redis.port}" p:pool-config-ref="poolConfig" />-->
+
+<!--    <bean id="redisTemplate" class="org.springframework.data.redis.core.RedisTemplate">-->
+<!--        <property name="connectionFactory" ref="connectionFactory" />-->
+<!--    </bean>-->
+
+
+
+<!--    &lt;!&ndash; 连接工厂需要端口号和ip地址 &ndash;&gt;-->
+<!--    <bean id="connectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">-->
+<!--        <property name="hostName" value="127.0.0.1"></property>-->
+<!--        <property name="port" value="6379"></property>-->
+<!--&lt;!&ndash;        <constructor-arg name=""&ndash;&gt;-->
+<!--    </bean>-->
+
+<!--    &lt;!&ndash; 使用redisTemplate访问redis操作对象 &ndash;&gt;-->
+<!--    <bean id="redisTemplate"-->
+<!--          class="org.springframework.data.redis.core.RedisTemplate">-->
+<!--        &lt;!&ndash; 访问redis数据库必须要先连接数据库，所以需要一个连接工厂 &ndash;&gt;-->
+<!--        <property name="connectionFactory" ref="connectionFactory"></property>-->
+<!--    </bean>-->
+
+
+</beans>

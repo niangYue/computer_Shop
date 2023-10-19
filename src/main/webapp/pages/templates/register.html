@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <base th:href="${'http://localhost:8080/pages/templates' + #servletContext.getContextPath()}+'/'">
+    <title>注册</title>
+</head>
+<body>
+<h1>注册页</h1>
+<form action="/user/register" method="post">
+    用户名：<input type="text" name="name" value="tom">
+    密码：<input type="text" name="password" >
+    确认密码：<input type="text" name="pwd">
+    电话号码：<input type="text" name="phone">
+    邮箱：<input type="text" name="email">
+    <input type="submit" value="注册">
+</form>
+<div>用户名：字母开头，允许5-16字节，允许字母数字下划线。密码：以字母开头，长度在6~18之间，只能包含字母、数字和下划线</div>
+<div th:text="${userReg}"></div>
+</body>
+</html>

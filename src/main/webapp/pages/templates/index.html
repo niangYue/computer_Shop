@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <base th:href="${'http://localhost:8080/pages/templates' + #servletContext.getContextPath()}+'/'">
+    <meta charset="UTF-8">
+    <title>电脑配置首页</title>
+</head>
+<body>
+<h1>主页面</h1>
+<div style="">
+    <a th:if="${session.logUser == null}" href="login.html">登录</a>
+    <div th:if="${session.logUser != null}">
+        <p th:text="${session.logUser.name}"></p>
+        <a th:href="@{/user/logout}">注销</a>
+
+        <a href="/user/userManage">用户管理</a>
+        <p th:text="${userAuthority}"></p>
+
+        <a href="shopcart.html">查看购物车</a>
+        <a href="order.html">我的订单</a>
+    </div>
+</div>
+
+
+<h4>硬件信息展示</h4>
+<div>
+    <form action="/shopCart/add" method="post">
+
+    <table>
+
+            <!--        cpu-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>cpu</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        显卡-->
+            <tr>
+                <table border="1px" th:if="${!graphicsCards.empty}">
+                    <tr>显卡</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="graphicsCard,cpuStar : ${graphicsCards}">
+                        <td th:text="${graphicsCard.gcName}"></td>
+                        <td th:text="${graphicsCard.gcFactory}"></td>
+                        <td th:text="${graphicsCard.gcParam}"></td>
+                        <td><a th:href="@{graphicsCard.gcImg}"/>点击展示</td>
+                        <td th:text="${graphicsCard.gcPrice}"></td>
+                        <td th:text="${graphicsCard.gcInventory}"></td>
+                        <td><input type="checkbox" name="graphicsCard" th:value="${graphicsCard.gcId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${graphicsCards.empty}">暂无显卡信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        内存-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>内存</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        硬盘-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>硬盘</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        机箱-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>机箱</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        散热-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>散热</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        主板-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>主板</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        电源-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>电源</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+            <!--        风扇-->
+            <tr>
+                <table border="1px" th:if="${!cpus.empty}">
+                    <tr>风扇</tr>
+                    <tr>
+                        <th>型号</th>
+                        <th>厂家</th>
+                        <th>详细参数</th>
+                        <th>图片展示</th>
+                        <th>价格</th>
+                        <th>库存</th>
+                    </tr>
+                    <tr th:each="cpu,cpuStar : ${cpus}">
+                        <td th:text="${cpu.cName}"></td>
+                        <td th:text="${cpu.cFactory}"></td>
+                        <td th:text="${cpu.cParam}"></td>
+                        <td><a th:href="@{cpu.cImg}"/>点击展示</td>
+                        <td th:text="${cpu.cPrice}"></td>
+                        <td th:text="${cpu.cInventory}"></td>
+                        <td><input type="checkbox" name="cpu" th:value="${cpu.cId}">选择</td>
+                    </tr>
+                </table>
+                <div th:if="${cpus.empty}">暂无CPU信息，正在为你快速上货。</div>
+            </tr>
+
+        <tr><input type="submit" value="加入购物车"></tr>
+
+    </table>
+    </form>
+</div>
+</body>
+</html>
